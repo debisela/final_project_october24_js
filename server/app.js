@@ -17,7 +17,7 @@ app.use('/api/admin', adminRouter)
 app.use('/api/attendee', attendeeRouter)
 
 
-const PORT = process.env.PORT || 3200
+const PORT = process.env.PORT || 3300
 app.listen(PORT, ()=>{
     console.log(`run on ${PORT}`);
 })
