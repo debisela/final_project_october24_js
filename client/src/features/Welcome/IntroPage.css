@@ -1,0 +1,52 @@
+/* Center the content on the page */
+.intro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Style the main heading */
+h1 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+/* Container for the buttons to space them evenly */
+.button-container {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Common button styles */
+.intro-button {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* User button styling */
+.user-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Admin button styling */
+.admin-button {
+    background-color: #FF5733;
+    color: white;
+}
+
+/* Hover and focus effect */
+.intro-button:hover, .intro-button:focus {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
