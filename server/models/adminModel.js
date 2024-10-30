@@ -62,6 +62,10 @@ for (const item of selectedFields){
     .update({show_column:true})
     .where('column_name',item)
 }
+ // Set font_type to null for all fields where show_column is false
+ await db('tag_settings')
+ .update({ font_type: null })
+ .where('show_column', false);
 }
 //fetch selected fields
 //fetch all column names from attendee table
@@ -78,6 +82,15 @@ const updateFontType = async(fontType)=>{
     .where('show_column',true)
 }
 
+
+//fetch fonttype
+const getFontType = async()=>{
+    return await db('tag_settings')
+    .select('font_type')
+    .where('show_column',true)
+    .first()
+}
+
 //update font-color for specific selected fields
 const updateColorSize = async(updateFields)=>{
     for (const item of updateFields){
@@ -91,6 +104,6 @@ const updateColorSize = async(updateFields)=>{
     }
     }
 
-module.exports = {getFields, saveTagFields, getSelectedFields, updateFontType, updateColorSize}
+module.exports = {getFields, saveTagFields, getSelectedFields, updateFontType, getFontType, updateColorSize}
 
 

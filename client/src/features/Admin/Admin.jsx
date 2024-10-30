@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { fetchFields, fetchSelectedFields, selectField, toggleFieldSelection } from "./state/adminSlice";
 import { useFieldsSelector, useFieldsSelection, useFieldsStatus } from "./state/hooks";
+import Formatting from "./Formatting";
 
 const Admin = ()=>{
     const fields = useFieldsSelector()
@@ -28,6 +29,16 @@ const Admin = ()=>{
     dispatch(selectField(selectedFields)); // Dispatch action to save selected fields
   };
 
+   // Function to format field names
+   const formatFieldName = (fieldName) => {
+    // Remove underscores and capitalize each word
+    return fieldName
+        .replace(/_/g, ' ') // Replace underscores with spaces
+        .split(' ') // Split into words
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
+        .join(' '); // Join words back together
+};
+
 
     if (status === 'loading') return <h2>Loading...</h2>
     if (status === 'failed') return <h2>Can't get fields...</h2>
@@ -43,11 +54,12 @@ const Admin = ()=>{
                     checked={selectedFields.includes(item.column_name)}
                     onChange={handleFieldChange}
                     />
-                    <label>{item.column_name}</label>
+                    <label>{formatFieldName(item.column_name)}</label>
                 </div>
             ))}
            <button onClick={handleSubmit}>Save my fields</button>
         </div>
+        <Formatting selectedFields={selectedFields}/>
         </>
     )
 }

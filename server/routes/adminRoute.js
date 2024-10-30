@@ -1,5 +1,5 @@
 const express = require('express')
-const {_getFields, _saveTagFields, _getSelectedFields, _updateFontType, _updateColorSize}=require('../controllers/adminController.js')
+const {_getFields, _saveTagFields, _getSelectedFields, _updateFontType, _getFontType, _updateColorSize}=require('../controllers/adminController.js')
 
 const router = express.Router()
 
@@ -15,6 +15,9 @@ router.get('/tag/fields', _getSelectedFields)
 
 //route to save font-type of selected fields
 router.post('/tag/font', _updateFontType)
+
+//route to get font-type of selected fields
+router.get('/tag/font', _getFontType)
 
 //route to save font-color for each field
 router.post('/tag/font-color-size', _updateColorSize)

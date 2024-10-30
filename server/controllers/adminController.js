@@ -1,4 +1,4 @@
-const {getFields, saveTagFields, getSelectedFields, updateFontType, updateColorSize} = require('../models/adminModel')
+const {getFields, saveTagFields, getSelectedFields, updateFontType, getFontType, updateColorSize} = require('../models/adminModel')
 
 const _getFields = async(req, res)=>{
     try {
@@ -42,15 +42,25 @@ const _updateFontType = async(req, res)=>{
 
     try {
         const {fontType} = req.body;
-        console.log(req.body);
+        console.log(fontType);
         
         await updateFontType(fontType);
-        res.status(200).json({msg:'font-type updated successfully'})
+        res.status(200).json({msg:'font-type updated successfully', fontType: fontType})
         
     } catch (error) {
         console.log(error);
         res.status(404).json({msg:'error updating font-type'})
     }
+    }
+
+    const _getFontType = async(req, res)=>{
+        try {
+            const fontType = await getFontType();
+            res.status(200).json(fontType);
+        } catch (error) {
+            console.log(error);
+            res.status(404).json({msg:'error fetching fonttype'})
+        }
     }
 
 
@@ -69,4 +79,4 @@ const _updateColorSize = async(req, res)=>{
         }
         }
 
-module.exports={_getFields, _saveTagFields, _getSelectedFields, _updateFontType,_updateColorSize}
+module.exports={_getFields, _saveTagFields, _getSelectedFields, _updateFontType,_getFontType,_updateColorSize}
