@@ -22,11 +22,14 @@ const Admin = ()=>{
             {fields.map((item, index)=>(
                 <div key={index}>
                     <input
+                    type="checkbox"
+                    value={item.column_name}
                     
                     
                     
                     
                     />
+                    <label>{item.column_name}</label>
                 </div>
             ))}
         </div>
