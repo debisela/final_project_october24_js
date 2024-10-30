@@ -101,9 +101,57 @@ export const adminSlice = createSlice({
             }
           },
     },
-
-
-
-
-
+    extraReducers(builder){
+        builder
+        .addCase(fetchFields.pending, state=>{
+            state.status = "loading";
+        })
+        .addCase(fetchFields.fulfilled, (state, action)=>{
+            state.status = "success";
+            state.fields = action.payload
+        })
+        .addCase(fetchFields.rejected, state=>{
+            state.status = "failed"
+        })
+        .addCase(fetchSelectedFields.pending, state=>{
+            state.status = "loading";
+        })
+        .addCase(fetchSelectedFields.fulfilled, (state, action)=>{
+            state.status = "success";
+            state.selectedFields = action.payload
+        })
+        .addCase(fetchSelectedFields.rejected, state=>{
+            state.status = "failed"
+        })
+        .addCase(selectField.pending, state=>{
+            state.status = "loading";
+        })
+        .addCase(selectField.fulfilled, (state,action)=>{
+      
+            state.status = "success";
+        })
+        .addCase(selectField.rejected, state=>{
+            state.status = "failed"
+        })
+        .addCase(selectFont.pending, state=>{
+            state.status = "loading";
+        })
+        .addCase(selectFont.fulfilled, (state,action)=>{
+      
+            state.status = "success";
+        })
+        .addCase(selectFont.rejected, state=>{
+            state.status = "failed"
+        })
+    }
 })
+
+export const fields = (state)=>state.fieldsReducer.fields;
+export const selectedFields = (state)=> state.fieldsReducer.selectedFields;
+export const fontType = (state)=> state.fieldsReducer.fontType;
+
+export const status = (state)=> state.fieldsReducer.status
+export const state = (state) => state.fieldsReducer;
+
+export const {toggleFieldSelection} = adminSlice.actions
+export default adminSlice.reducer;
