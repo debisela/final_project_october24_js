@@ -1,6 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+//URL to deployed server
+const API_URL = 'https://test-final-project-vanilla-server.onrender.com'
+
 const initialState = {
     fields: [],
     selectedFields:[],
@@ -15,7 +18,7 @@ export const fetchFields = createAsyncThunk(
     'admin/fetchFields',
     async()=>{
         try {
-            const response = await axios.get(`http://localhost:3300/api/admin/fields`);
+            const response = await axios.get(`${API_URL}/api/admin/fields`);
             return response.data;
         } catch (error) {
             console.log(error);
@@ -30,7 +33,7 @@ export const selectField = createAsyncThunk(
         try {
             console.log('selectedFields passed', selectedFields);
             
-            const response = await axios.post('http://localhost:3300/api/admin/tag/fields', 
+            const response = await axios.post(`${API_URL}/api/admin/tag/fields`, 
             {selectedFields},
             {headers: {
                 'Content-Type': 'application/json'
@@ -51,7 +54,7 @@ export const fetchSelectedFields = createAsyncThunk(
     'admin/fetchSelectedFields',
     async () => {
         try {
-            const response = await axios.get(`http://localhost:3300/api/admin/tag/fields`);
+            const response = await axios.get(`${API_URL}/api/admin/tag/fields`);
             console.log(response.data);
             
             return response.data; 
@@ -68,7 +71,7 @@ export const selectFont = createAsyncThunk(
         try {
             console.log('fonttype selected', fontType);
             
-            const response = await axios.post('http://localhost:3300/api/admin/tag/font', 
+            const response = await axios.post(`${API_URL}/api/admin/tag/font`, 
             {fontType},
             {headers: {
                 'Content-Type': 'application/json'
