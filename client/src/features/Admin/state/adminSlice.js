@@ -57,7 +57,7 @@ export const fetchSelectedFields = createAsyncThunk(
             const response = await axios.get(`${API_URL}/api/admin/tag/fields`);
             console.log(response.data);
             
-            return response.data; 
+            return response.data.map(item=>item.column_name); 
         } catch (error) {
             console.log(error);
         }
@@ -96,10 +96,10 @@ export const adminSlice = createSlice({
         toggleFieldSelection: (state, action) => {
             const field = action.payload;
             if (state.selectedFields.includes(field)) {
-              // Deselect the field
+              // if field already selected, remove it
               state.selectedFields = state.selectedFields.filter((selected) => selected !== field);
             } else {
-              // Select the field
+              // if not yet selected, add
               state.selectedFields.push(field);
             }
           },
