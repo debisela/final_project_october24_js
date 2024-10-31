@@ -1,0 +1,77 @@
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+//URL to deployed server
+const API_URL = 'https://test-final-project-vanilla-server.onrender.com'
+
+const initialState = {
+    attendees:[],
+    status: "",
+    // fontType: "Arial"
+}
+
+//async thunk for search/fetch attendees
+export const fetchAttendees = createAsyncThunk(
+    'user/fetchAttendees',
+    async(query, {rejectWithValue})=>{
+        try {
+            const response = await axios.get(`${API_URL}/api/user/attendees?query=${query}`);
+            console.log(response.data); 
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response.data)
+        }
+    }
+
+)
+export const userSlice = createSlice({
+    name: "user",
+    initialState: initialState,
+    reducers:{
+        //reset attendees
+        resetAttendees:(state)=>{
+            state.attendees = [];
+        }
+    },
+    extraReducers(builder){
+        builder
+        .addCase(fetchAttendees.pending, state=>{
+            state.status = "loading";
+        })
+        .addCase(fetchAttendees.fulfilled, (state, action)=>{
+            state.status = "success";
+            state.attendees = action.payload.attendees;
+            // state.fontType = action.payload.fontType
+        })
+        .addCase(fetchAttendees.rejected, state=>{
+            state.status = "failed"
+        })
+        // builder
+        // .addCase(toggleCheckIn.pending, state=>{
+        //     state.status = "loading";
+        // })
+        // .addCase(toggleCheckIn.fulfilled, (state,action)=>{
+        //     const updatedAttendee = action.payload;
+        //         const index = state.attendees.findIndex(att => att.id === updatedAttendee.id);
+        //         if (index !== -1) {
+        //             state.attendees[index] = { 
+        //                 ...state.attendees[index], 
+        //                 checked_in: updatedAttendee.checked_in, 
+        //                 check_in_time: updatedAttendee.check_in_time 
+        //             };
+        //         }
+        //     state.status = "success";
+        // })
+        // .addCase(toggleCheckIn.rejected, state=>{
+        //     state.status = "failed"
+        // })
+    }
+})
+
+export const attendees = (state)=> state.attendeeReducer.attendees;
+// export const fontType = (state:any)=> state.attendeeReducer.fontType;
+export const status = (state)=> state.attendeeReducer.status
+export const state = (state) => state.attendeeReducer;
+
+export const {resetAttendees} = userSlice.actions
+export default userSlice.reducer;
