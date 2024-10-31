@@ -24,6 +24,31 @@ export const fetchAttendees = createAsyncThunk(
     }
 
 )
+
+//asyn thunk for check in attendee
+export const checkInAttendee = createAsyncThunk(
+    'user/checkInAttendee',
+    async(attendeeId, {rejectWithValue})=>{
+        try {
+            console.log("id being passed", attendeeId);
+            const response = await axios.post(`${API_URL}/api/user/attendees/checkin`, 
+                {id: attendeeId},
+            {headers: {
+                'Content-Type': 'application/json'
+            }});
+            console.log("response data", response.data);
+            
+            return response.data;
+            
+            
+        } catch (error) {
+            console.log("error checking in");
+            
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
+
 export const userSlice = createSlice({
     name: "user",
     initialState: initialState,
@@ -46,25 +71,22 @@ export const userSlice = createSlice({
         .addCase(fetchAttendees.rejected, state=>{
             state.status = "failed"
         })
-        // builder
-        // .addCase(toggleCheckIn.pending, state=>{
-        //     state.status = "loading";
-        // })
-        // .addCase(toggleCheckIn.fulfilled, (state,action)=>{
-        //     const updatedAttendee = action.payload;
-        //         const index = state.attendees.findIndex(att => att.id === updatedAttendee.id);
-        //         if (index !== -1) {
-        //             state.attendees[index] = { 
-        //                 ...state.attendees[index], 
-        //                 checked_in: updatedAttendee.checked_in, 
-        //                 check_in_time: updatedAttendee.check_in_time 
-        //             };
-        //         }
-        //     state.status = "success";
-        // })
-        // .addCase(toggleCheckIn.rejected, state=>{
-        //     state.status = "failed"
-        // })
+        .addCase(checkInAttendee.pending, state=>{
+            state.status = "loading";
+        })
+        .addCase(checkInAttendee.fulfilled, (state,action)=>{
+            state.status = "success";
+            const updatedAttendee = action.payload;
+            const index = state.attendees.findIndex(
+              (attendee) => attendee.id === updatedAttendee.id
+            );
+            if (index !== -1) {
+              state.attendees[index] = updatedAttendee;
+            }
+        })
+        .addCase(checkInAttendee.rejected, state=>{
+            state.status = "failed"
+        })
     }
 })
 
