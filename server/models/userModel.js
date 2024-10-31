@@ -45,10 +45,11 @@ const checkInAttendee = async(id)=>{
         throw new Error ('Attendee not found');
     }
 
-    const toggledStatus = !attendee.checked_in
+    const toggledStatus = !attendee.checked_in;
+    const checkInTime = toggledStatus? new Date():null;
 
     await db('attendees')
-    .update({checked_in:toggledStatus, check_in_time:new Date()})
+    .update({checked_in:toggledStatus, check_in_time:checkInTime})
     .where('id', id)
 
     return await db('attendees')
