@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { fetchAttendees, resetAttendees } from "./state/userSlice";
 import { useAttendeeSelector, useAttendeeStatus } from "./state/hooks";
 import CheckIn from "./CheckIn";
+import Print from "./Print";
 
 const User = ()=>{
     const [query, setQuery] = useState("")
@@ -57,6 +58,7 @@ const User = ()=>{
                   return null;
                 })}
                  <CheckIn attendeeId={attendee.id} checkedIn={attendee.checked_in}/>
+                 <Print attendee={attendee}/>
             </div>
            
           ))
