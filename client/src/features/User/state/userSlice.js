@@ -36,9 +36,9 @@ export const checkInAttendee = createAsyncThunk(
             {headers: {
                 'Content-Type': 'application/json'
             }});
-            console.log("response data", response.data);
+            console.log("response data from check-in", attendeeId);
             
-            return response.data;
+            return attendeeId;
             
             
         } catch (error) {
@@ -81,7 +81,7 @@ export const userSlice = createSlice({
               (attendee) => attendee.id === updatedAttendee.id
             );
             if (index !== -1) {
-              state.attendees[index] = updatedAttendee;
+              state.attendees[index].checked_in = updatedAttendee.checked_in;
             }
         })
         .addCase(checkInAttendee.rejected, state=>{

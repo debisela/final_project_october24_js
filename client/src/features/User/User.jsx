@@ -56,7 +56,7 @@ const User = ()=>{
                   }
                   return null;
                 })}
-                 <CheckIn attendeeId={attendee.id}/>
+                 <CheckIn attendeeId={attendee.id} checkedIn={attendee.checked_in}/>
             </div>
            
           ))
