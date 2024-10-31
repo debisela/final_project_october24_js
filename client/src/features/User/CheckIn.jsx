@@ -1,17 +1,20 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import { checkInAttendee } from "./state/userSlice";
 
 const CheckIn = ({attendeeId, checkedIn}) =>{
     const dispatch = useDispatch()
-    console.log(checkedIn);
+   
+    console.log("checkedIn props passed", checkedIn);
     
 
     const handleCheckIn = ()=>{
     dispatch(checkInAttendee(attendeeId))
     }
 
-    console.log("checked in status", checkedIn);
+    
+
+    // console.log("checked in status", checkedIn);
     
 
     return(
