@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { fetchFields, fetchSelectedFields, selectField, toggleFieldSelection } from "./state/adminSlice";
 import { useFieldsSelector, useFieldsSelection, useFieldsStatus } from "./state/hooks";
 import Formatting from "./Formatting";
+import './admin.css'
 
 const Admin = ()=>{
     const fields = useFieldsSelector()
@@ -40,28 +41,30 @@ const Admin = ()=>{
 };
 
 
-    if (status === 'loading') return <h2>Loading...</h2>
-    if (status === 'failed') return <h2>Can't get fields...</h2>
-    return(
-        <>
-        <h2>Fields Selection</h2>
-        <div>
-            {fields.map((item, index)=>(
-                <div key={index}>
+if (status === 'loading') return <h2 className="status-message">Loading...</h2>;
+if (status === 'failed') return <h2 className="status-message error-message">Can't get fields...</h2>;
+
+return (
+    <div className="admin-container">
+        <h2 className="main-heading">Fields Selection</h2>
+        <div className="fields-selection">
+            {fields.map((item, index) => (
+                <div key={index} className="field-item">
                     <input
-                    type="checkbox"
-                    value={item.column_name}
-                    checked={selectedFields.includes(item.column_name)}
-                    onChange={handleFieldChange}
+                        type="checkbox"
+                        value={item.column_name}
+                        checked={selectedFields.includes(item.column_name)}
+                        onChange={handleFieldChange}
+                        className="checkbox-input"
                     />
-                    <label>{formatFieldName(item.column_name)}</label>
+                    <label className="field-label">{formatFieldName(item.column_name)}</label>
                 </div>
             ))}
-           <button onClick={handleSubmit}>Save my fields</button>
+            <button onClick={handleSubmit} className="submit-button">Save my fields</button>
         </div>
-        <Formatting selectedFields={selectedFields}/>
-        </>
-    )
+        <Formatting selectedFields={selectedFields} />
+    </div>
+);
 }
 
 export default Admin
