@@ -1,7 +1,12 @@
 import React from "react";
+import { useFontSelector } from "./state/hooks";
 
 
 const Print = ({attendee})=>{
+
+    //get font
+  const fontType = useFontSelector(attendee.fonttype)
+  console.log(fontType);
 
     // Function to format field names
   const formatFieldName = (fieldName) => {
@@ -49,7 +54,7 @@ const handlePrint = () => {
                 <title>Print Tag</title>
                 <style>
                     body {
-                        font-family: Arial, sans-serif;
+                        font-family: ${fontType}, sans-serif;
                         margin: 20px;
                     }
                     h2 {
