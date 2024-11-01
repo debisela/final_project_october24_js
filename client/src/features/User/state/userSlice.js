@@ -7,7 +7,7 @@ const API_URL = 'https://test-final-project-vanilla-server.onrender.com'
 const initialState = {
     attendees:[],
     status: "",
-    // fontType: "Arial"
+    fontType: "Arial"
 }
 
 //async thunk for search/fetch attendees
@@ -66,7 +66,7 @@ export const userSlice = createSlice({
         .addCase(fetchAttendees.fulfilled, (state, action)=>{
             state.status = "success";
             state.attendees = action.payload.attendees;
-            // state.fontType = action.payload.fontType
+            state.fontType = action.payload.fontType
         })
         .addCase(fetchAttendees.rejected, state=>{
             state.status = "failed"
@@ -91,7 +91,7 @@ export const userSlice = createSlice({
 })
 
 export const attendees = (state)=> state.attendeeReducer.attendees;
-// export const fontType = (state:any)=> state.attendeeReducer.fontType;
+export const fontType = (state)=> state.attendeeReducer.fontType;
 export const status = (state)=> state.attendeeReducer.status
 export const state = (state) => state.attendeeReducer;
 

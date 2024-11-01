@@ -1,7 +1,12 @@
 import React from "react";
+import { useFontSelector } from "./state/hooks";
 
 
 const Print = ({attendee})=>{
+
+    //get font
+  const fontType = useFontSelector(attendee.fonttype)
+  console.log(fontType);
 
     // Function to format field names
   const formatFieldName = (fieldName) => {
@@ -17,17 +22,25 @@ const handlePrint = () => {
     const printWindow = window.open("", "", "width=600,height=400");
 
     if (printWindow) {
+        // Set default values for first and last name if undefined
+        const title = attendee.title ? `${attendee.title} ` : '';
+        const firstName = attendee.first_name || '';
+        const lastName = attendee.last_name || '';
+
+         // Combine title and name into one heading
+         const nameHeading = `<h2>${title}${firstName} ${lastName}</h2>`;
+
         const printableContent = `
             <div>
-                <h2>${attendee.first_name} ${attendee.last_name}</h2>
-                ${attendee.title ? `<p>${attendee.title}</p>` : ''}
-                ${Object.entries(attendee)
-                    .filter(([key]) =>
+            ${nameHeading}
+             ${Object.entries(attendee)
+                    .filter(([key, value]) =>
                         key !== 'id' &&
-                        key !== 'checked_in' &&
                         key !== 'check_in_time' &&
                         key !== 'first_name' &&
-                        key !== 'last_name'
+                        key !== 'last_name' &&
+                        key !== 'title' &&
+                        typeof value !== 'boolean' // Exclude boolean fields
                     )
                     .map(([key, value]) =>
                         `<p>${formatFieldName(key)}: ${value}</p>`
@@ -41,7 +54,7 @@ const handlePrint = () => {
                 <title>Print Tag</title>
                 <style>
                     body {
-                        font-family: Arial, sans-serif;
+                        font-family: ${fontType}, sans-serif;
                         margin: 20px;
                     }
                     h2 {
