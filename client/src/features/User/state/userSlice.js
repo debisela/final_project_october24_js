@@ -39,6 +39,7 @@ export const checkInAttendee = createAsyncThunk(
             console.log("response data from check-in", attendeeId);
             
             return attendeeId;
+            // return {id:attendeeId, checked_in:checked_in};
             
             
         } catch (error) {
@@ -76,13 +77,18 @@ export const userSlice = createSlice({
         })
         .addCase(checkInAttendee.fulfilled, (state,action)=>{
             state.status = "success";
-            const updatedAttendee = action.payload;
-            const index = state.attendees.findIndex(
-              (attendee) => attendee.id === updatedAttendee.id
-            );
-            if (index !== -1) {
-              state.attendees[index].checked_in = updatedAttendee.checked_in;
-            }
+            // const updatedAttendee = action.payload;
+            const { id, checked_in } = action.payload; // Destructure to get id and checked_in
+            // const index = state.attendees.findIndex(
+            //   (attendee) => attendee.id === updatedAttendee.id
+            // );
+            // if (index !== -1) {
+            //   state.attendees[index].checked_in = updatedAttendee.checked_in;
+            // }
+            const index = state.attendees.findIndex(attendee => attendee.id === id);
+                if (index !== -1) {
+                    state.attendees[index].checked_in = checked_in; // Update checked_in status directly
+                }
         })
         .addCase(checkInAttendee.rejected, state=>{
             state.status = "failed"

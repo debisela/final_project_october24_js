@@ -10,17 +10,24 @@ import { formatFieldName } from "../Admin/tagStyle";
 
 const User = ()=>{
     const [query, setQuery] = useState("")
+    const [searched, setSearched] = useState(false); // Track if a search has been made
+    const [errorMessage, setErrorMessage] = useState("");
     const attendees = useAttendeeSelector()
     const status = useAttendeeStatus()
   const dispatch = useDispatch()
 
   const handleSearch = async()=>{
+     // Reset error message
+     setErrorMessage("");
     //if query empty, reset attendees
     if (query.trim()===""){
-      dispatch(resetAttendees())
+      dispatch(resetAttendees());
+      setErrorMessage("Please enter a name.");
+      setSearched(false); // Reset search status
       return
     }
     await dispatch(fetchAttendees(query)).unwrap();
+    setSearched(true); // Mark as searched after fetching attendees
 
   }
 
@@ -39,21 +46,41 @@ const User = ()=>{
             />
             <button onClick={handleSearch} className="search-button">Search</button>
         </div>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
         {attendees.length > 0 ? (
             attendees.map((attendee) => (
                 <div className="attendee-card" key={attendee.id}>
-                    {Object.entries(attendee).map(([key, value]) => {
-                        if (key !== 'id' && key !== 'checked_in' && key !== 'check_in_time') {
-                            return <p key={key} className="attendee-info">{`${formatFieldName(key)}: ${value}`}</p>;
+                     {/* Display ID first if it exists */}
+    {attendee.id && (
+        <p className="attendee-info">
+            {`ID: ${attendee.id}`}
+        </p>
+    )}
+
+    {/* Display first and last name on the same line if they exist */}
+    {attendee.first_name && (
+        <p className="attendee-info">
+            {`First Name: ${attendee.first_name}`}
+        </p>
+    )}
+     {attendee.last_name && (
+        <p className="attendee-info">
+            {`Last Name: ${attendee.last_name}`}
+        </p>
+    )}
+
+    {/* Display remaining fields below */}
+                    {Object.entries(attendee)
+                    .filter(([key]) => !['id', 'first_name', 'last_name'].includes(key))
+                    .map(([key, value]) => (<p key={key} className="attendee-info">{`${formatFieldName(key)}: ${value}`}</p>))
                         }
-                        return null;
-                    })}
+            
                     <CheckIn attendeeId={attendee.id} checkedIn={attendee.checked_in} />
                     <Print attendee={attendee} />
                 </div>
             ))
         ) : (
-            <p className="no-attendees">No attendees found.</p>
+           searched && <p className="no-attendees">No attendees found.</p>
         )}
     </div>
 );
