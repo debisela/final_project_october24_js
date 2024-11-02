@@ -1,7 +1,7 @@
 /* Header container styling */
 .header-container {
-    background-color: #333;
-    padding: 1rem;
+    background-color: #333; /* Dark background for the header */
+    padding: 1.5rem; /* Slightly increased padding for a better look */
     display: flex;
     justify-content: center;
 }
@@ -9,25 +9,25 @@
 /* Navbar styling */
 .nav-bar {
     display: flex;
-    gap: 2rem;
+    gap: 2rem; /* Space between navigation links */
 }
 
 /* Individual link styling */
 .nav-link {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    transition: color 0.3s ease, transform 0.3s ease;
+    color: #fff; /* White text for better contrast */
+    text-decoration: none; /* No underline for links */
+    font-size: 1.5rem; /* Increased font size for better visibility */
+    font-weight: bold; /* Bold text for emphasis */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions for effects */
 }
 
 /* Hover effect for links */
 .nav-link:hover {
-    color: #4CAF50;
-    transform: scale(1.05);
+    color: #4CAF50; /* Green color on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
 }
 
 /* Active link styling (optional) */
 .nav-link-active {
-    color: #FF5733;
+    color: #FF5733; /* Distinct color for active links */
 }

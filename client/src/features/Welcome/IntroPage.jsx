@@ -8,6 +8,7 @@ const IntroPage = ()=>{
         <div className="intro-container">
             <h1>Welcome to TagMaster</h1>
             <h2>Conference tag & Check-in System</h2>
+            <p>If you are working onsite at the conference, please proceed as user. If you are an administrator, please proceed as administrator </p>
             <div className="button-container">
                 <Link to="/user">
                     <button className="intro-button user-button">I am a User</button>

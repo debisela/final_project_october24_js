@@ -1,73 +1,105 @@
-/* Center the content on the page */
+
 .user-container {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    background-color: #f7f7f7;
-    font-family: Arial, sans-serif;
-    text-align: center;
+    justify-content: center; */
+    height: 100%; /* Full height of the parent (body) */
+    width: 600px;
+    max-width: 800px;
+    background-color: white; /* White background for the container */
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 20px; /* Padding for inner spacing */
+    margin: auto; /* Center the container */
+    text-align: center; /* Center text */
 }
 
-/* Style the main heading */
-.main-heading {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 1.5rem;
+/* Search section styling */
+.search-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Space between input and button */
+    /* width: 90%; */
+    margin-bottom: 2rem; /* Space below the search section */
 }
 
 /* Search bar styling */
-.search-bar {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
 .search-input {
     padding: 0.8rem;
     font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    width: 95%; 
 }
 
+/* Search button styling */
 .search-button {
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 0.8rem 2rem; /* Button padding */
+    font-size: 1.1rem; /* Font size for buttons */
+    width: 100%; 
+    border: none; /* No border */
+    border-radius: 8px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for effects */
+    background-color: #d570d2; /* Purple background */
+    color: white; /* White text */
 }
 
-.search-button:hover, .search-button:focus {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* Hover and focus effects for the search button */
+.search-button:hover,
+.search-button:focus {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+
+/* Attendees list styling */
+.attendees-list {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem; /* Space between attendee cards */
+    width: 100%; /* Full width for the list */
+    justify-content: center;
 }
 
 /* Attendee card styling */
 .attendee-card {
-    background-color: #fff;
-    padding: 1.5rem;
-    margin: 1rem 0;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
-    text-align: left;
+    background-color: #fff; /* White background for cards */
+    padding: 1.5rem; /* Padding inside the card */
+    margin: 0;
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 100%; /* Full width for cards */
+    text-align: left; /* Left-align text in cards */
 }
 
 /* Attendee information styling */
 .attendee-info {
-    font-size: 1rem;
-    color: #555;
-    margin: 0.5rem 0;
+    font-size: 1rem; /* Font size for attendee info */
+    color: #555; /* Dark gray text */
+    margin: 0.5rem 0; /* Margin above and below each info line */
 }
 
 /* No attendees message styling */
 .no-attendees {
-    font-size: 1.2rem;
-    color: #777;
+    font-size: 1.2rem; /* Larger font size for visibility */
+    color: #777; /* Medium gray for no attendees message */
 }
+button{
+    padding: 0.8rem 2rem; /* Button padding */
+    font-size: 1.1rem; /* Font size for buttons */
+    border: none; /* No border */
+    border-radius: 8px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for effects */
+    background-color: #d570d2; 
+    color: white;
+}
+
+button:hover,
+button:focus {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+

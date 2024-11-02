@@ -7,7 +7,7 @@ const API_URL = 'https://test-final-project-vanilla-server.onrender.com'
 const initialState = {
     fields: [],
     selectedFields:[],
-    fontType: 'Georgia',
+    fontType: '',
     // fontSize: '16px',
     // fontColor: '#000000', //default black
     status: "",

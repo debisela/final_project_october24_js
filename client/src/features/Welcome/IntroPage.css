@@ -1,52 +1,68 @@
+/* Overall body styles to apply light purple background */
+body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    font-family: Arial, sans-serif; /* Global font */
+    background: linear-gradient(to bottom, #e4caf0, #7c2fb0); /* Darker purple gradient */
+    height: 100vh; /* Full height of the viewport */
+    display: flex; /* Use flexbox for body */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+}
+
 /* Center the content on the page */
 .intro-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f7f7f7;
-    font-family: Arial, sans-serif;
-    text-align: center;
+    display: flex; /* Flexbox for inner content */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center items horizontally within the container */
+    justify-content: center; /* Center items vertically within the container */
+    height: 100%; /* Full height of the parent (body) */
+    width: 100%; /* Use 90% width for some spacing */
+    max-width: 600px; /* Maximum width for the container */
+    background-color: white; /* White background for the container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 20px; /* Padding for inner spacing */
+    margin: auto; /* Center the container */
+    text-align: center; /* Center text */
 }
 
 /* Style the main heading */
-h1 {
-    font-size: 3rem;
-    color: #333;
-    margin-bottom: 2rem;
+.intro-container h1 {
+    color: #331a37; /* Dark color for the heading */
+    margin-bottom: 1rem;
 }
 
 /* Container for the buttons to space them evenly */
 .button-container {
-    display: flex;
-    gap: 1rem;
+    display: flex; /*Use flexbox for button layout*/
+    gap: 1rem; /* Space between buttons */
 }
 
 /* Common button styles */
 .intro-button {
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 0.8rem 2rem; /* Button padding */
+    font-size: 1.1rem; /* Font size for buttons */
+    border: none; /* No border */
+    border-radius: 8px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for effects */
 }
 
 /* User button styling */
 .user-button {
-    background-color: #4CAF50;
+    background-color: #d570d2; 
     color: white;
 }
 
 /* Admin button styling */
 .admin-button {
-    background-color: #FF5733;
+    background-color: #590c65;
     color: white;
 }
 
-/* Hover and focus effect */
+/* Hover and focus effect for buttons */
 .intro-button:hover, .intro-button:focus {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow on hover */
 }
