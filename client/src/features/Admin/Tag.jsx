@@ -21,7 +21,7 @@ const Tag = ({ selectedFields, fontType }) => {
 
             {/* Display remaining fields */}
             {selectedFields
-                .filter(field => !['title', 'first_name', 'last_name'].includes(field))
+                .filter(field => !['title', 'first_name', 'last_name', 'id', 'checked_in', 'check_in_time','badge_printed' ].includes(field))
                 .map((item, index) => (
                     <div key={index} style={{ ...tagStyle.field }}>
                         {formatFieldName(item)}
