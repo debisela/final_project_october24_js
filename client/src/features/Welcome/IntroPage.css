@@ -17,8 +17,8 @@ body {
     align-items: center; /* Center items horizontally within the container */
     justify-content: center; /* Center items vertically within the container */
     height: 100%; /* Full height of the parent (body) */
-    width: 100%; /* Use 90% width for some spacing */
-    max-width: 600px; /* Maximum width for the container */
+    width: 100%; /* Use 100% width for some spacing */
+    max-width: 800px; /* Maximum width for the container */
     background-color: white; /* White background for the container */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */

@@ -89,22 +89,6 @@ export const selectFont = createAsyncThunk(
     }
 )
 
-// Async thunk for fetching font
-// export const fetchFont = createAsyncThunk(
-//     'admin/fetchFont',
-//     async () => {
-//         try {
-//             const response = await axios.get(`${API_URL}/api/admin/tag/font`);
-//             console.log(response.data);
-//             console.log('fonttype fetched', response.data.font_type);
-            
-//             return response.data.font_type
-//         } catch (error) {
-//             console.log(error);
-//         }
-//     }
-// );
-
 export const adminSlice = createSlice({
     name: "admin",
     initialState: initialState,
@@ -162,23 +146,13 @@ export const adminSlice = createSlice({
         .addCase(selectFont.rejected, state=>{
             state.status = "failed"
         })
-        // .addCase(fetchFont.pending, state=>{
-        //     state.status = "loading";
-        // })
-        // .addCase(fetchFont.fulfilled, (state, action)=>{
-        //     state.status = "success";
-        //     state.fontType = action.payload
-        // })
-        // .addCase(fetchFont.rejected, state=>{
-        //     state.status = "failed"
-        // })
     }
 })
 
 export const fields = (state)=>state.fieldsReducer.fields;
 export const selectedFields = (state)=> state.fieldsReducer.selectedFields;
 export const fontType = (state)=> state.fieldsReducer.fontType;
-// export const fonts = (state)=> state.fieldsReducer.fonts
+
 
 export const status = (state)=> state.fieldsReducer.status
 export const state = (state) => state.fieldsReducer;

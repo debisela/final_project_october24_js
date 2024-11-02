@@ -13,10 +13,6 @@ export const useFontSelection = ()=>{
     return useSelector(fontSelection)
 }
 
-// export const useSelectedFontSelector = ()=>{
-//     return useSelector(selectedFontSelection)
-// }
-
 export const useFieldsStatus = ()=>{
     return useSelector(selectStatus)
 }
