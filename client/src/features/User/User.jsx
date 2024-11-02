@@ -7,6 +7,7 @@ import Print from "./Print";
 import './user.css';
 import { formatFieldName } from "../Admin/tagStyle";
 
+
 const User = () => {
     const [query, setQuery] = useState("");
     const attendees = useAttendeeSelector();
@@ -24,6 +25,7 @@ const User = () => {
 
     if (status === 'loading') return <h2 className="status-message">Loading...</h2>;
     if (status === 'failed') return <h2 className="status-message error-message">Can't get attendee...</h2>;
+
 
     return (
         <>
