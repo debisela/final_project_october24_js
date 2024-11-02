@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFont } from "./state/adminSlice";
 import { useFontSelection} from "./state/hooks";
+import { tagStyle } from "./tagStyle";
  
 const Formatting = ({selectedFields})=>{
     const dispatch = useDispatch()
@@ -54,25 +55,12 @@ return(
                 <option value="Times New Roman">Times New Roman</option>
             </select>
       <div
-    style={{ fontFamily: fontType, 
-        border: "2px solid #333", // Border to visualize the tag
-        padding: "10px",
-        marginTop: "10px",
-        width: "3in", // Set width to 3 inches
-        height: "4in", // Set height to 4 inches
-        borderRadius: "8px",
-        textAlign: "center",
-        boxSizing: "border-box", // Ensure padding is included within width/height
-       }}>
+    style={{ fontFamily: fontType, ...tagStyle.tagContainer}}
+        >
       
          {/* Show title, first name, last name individually */}
          <div
-          style={{
-            fontSize: "36px", // Font size for attendee name
-            fontWeight: "bold",
-            marginBottom: "0.5rem",
-          }}
-        >
+          style={{...tagStyle.name}}>
           {selectedFields.includes("title") && (
             <span>{formatFieldName("title")} </span>
           )}
@@ -86,7 +74,7 @@ return(
         
         {/* Display remaining fields */}
         {selectedFields.filter(field => !['title', 'first_name', 'last_name'].includes(field)).map((item, index) => (
-          <div key={index} style={{ fontSize: "20px" }}>{formatFieldName(item)}</div>
+          <div key={index} style={{...tagStyle.field}}>{formatFieldName(item)}</div>
         ))}
       </div>
             </>
@@ -107,3 +95,17 @@ export default Formatting
 </div> */}
 
 // {formatFieldName('title')} {formatFieldName('first_name')} {formatFieldName('last_name')}
+
+// border: "2px solid #333", // Border to visualize the tag
+//         padding: "10px",
+//         marginTop: "10px",
+//         width: "3in", // Set width to 3 inches
+//         height: "4in", // Set height to 4 inches
+//         borderRadius: "8px",
+//         textAlign: "center",
+//         boxSizing: "border-box", // Ensure padding is included within width/height
+//        }}
+
+// fontSize: "36px", // Font size for attendee name
+//             fontWeight: "bold",
+//             marginBottom: "0.5rem",
