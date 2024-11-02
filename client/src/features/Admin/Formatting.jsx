@@ -43,7 +43,9 @@ const Formatting = ({selectedFields})=>{
 
 return(
     <>
-    <h2>Font Selection</h2>
+    
+            <h2>Tag Preview</h2>
+            <h2>Font Selection</h2>
     <select value={fontType} onChange={handleFontChange}>
                 <option value="" disabled>Please choose a font type</option>
                 <option value="Arial">Arial</option>
@@ -51,26 +53,40 @@ return(
                 <option value="Georgia">Georgia</option>
                 <option value="Times New Roman">Times New Roman</option>
             </select>
-            <h2>Preview</h2>
       <div
     style={{ fontFamily: fontType, 
-      border: '2px solid #333', // Border to visualize the tag
-      padding: '10px',
-      marginTop: '10px',
-      maxWidth: '250px', // Limit width to approximate tag size
-      borderRadius: '8px',
-      textAlign: 'center' // Center-align text>
+        border: "2px solid #333", // Border to visualize the tag
+        padding: "10px",
+        marginTop: "10px",
+        width: "3in", // Set width to 3 inches
+        height: "4in", // Set height to 4 inches
+        borderRadius: "8px",
+        textAlign: "center",
+        boxSizing: "border-box", // Ensure padding is included within width/height
        }}>
       
-        {/* Show title with first and last name on one line */}
-        {selectedFields.includes('title') && selectedFields.includes('first_name') && selectedFields.includes('last_name') && (
-          <div>
-            <strong>{formatFieldName('title')} {formatFieldName('first_name')} {formatFieldName('last_name')}</strong> 
-          </div>
-        )}
+         {/* Show title, first name, last name individually */}
+         <div
+          style={{
+            fontSize: "36px", // Font size for attendee name
+            fontWeight: "bold",
+            marginBottom: "0.5rem",
+          }}
+        >
+          {selectedFields.includes("title") && (
+            <span>{formatFieldName("title")} </span>
+          )}
+          {selectedFields.includes("first_name") && (
+            <span>{formatFieldName("first_name")} </span>
+          )}
+          {selectedFields.includes("last_name") && (
+            <span>{formatFieldName("last_name")}</span>
+          )}
+        </div>
+        
         {/* Display remaining fields */}
         {selectedFields.filter(field => !['title', 'first_name', 'last_name'].includes(field)).map((item, index) => (
-          <div key={index}>{formatFieldName(item)}</div>
+          <div key={index} style={{ fontSize: "20px" }}>{formatFieldName(item)}</div>
         ))}
       </div>
             </>
@@ -89,3 +105,5 @@ export default Formatting
             <div key={index}>{formatFieldName(item)}</div>
         ))}
 </div> */}
+
+// {formatFieldName('title')} {formatFieldName('first_name')} {formatFieldName('last_name')}
