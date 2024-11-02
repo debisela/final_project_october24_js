@@ -52,15 +52,40 @@ return(
                 <option value="Times New Roman">Times New Roman</option>
             </select>
             <h2>Preview</h2>
-            <div style={{fontFamily:fontType}}>
-                    {selectedFields.map((item, index)=>(
-                        <div key={index}>{formatFieldName(item)}</div>
-                    ))}
-            </div>
+      <div
+    style={{ fontFamily: fontType, 
+      border: '2px solid #333', // Border to visualize the tag
+      padding: '10px',
+      marginTop: '10px',
+      maxWidth: '250px', // Limit width to approximate tag size
+      borderRadius: '8px',
+      textAlign: 'center' // Center-align text>
+       }}>
+      
+        {/* Show title with first and last name on one line */}
+        {selectedFields.includes('title') && selectedFields.includes('first_name') && selectedFields.includes('last_name') && (
+          <div>
+            <strong>{formatFieldName('title')} {formatFieldName('first_name')} {formatFieldName('last_name')}</strong> 
+          </div>
+        )}
+        {/* Display remaining fields */}
+        {selectedFields.filter(field => !['title', 'first_name', 'last_name'].includes(field)).map((item, index) => (
+          <div key={index}>{formatFieldName(item)}</div>
+        ))}
+      </div>
             </>
 )
 }
 
 
 
+
+
 export default Formatting
+
+{/* <h2>Preview</h2>
+<div style={{fontFamily:fontType}}>
+        {selectedFields.map((item, index)=>(
+            <div key={index}>{formatFieldName(item)}</div>
+        ))}
+</div> */}
