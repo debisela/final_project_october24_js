@@ -4,6 +4,7 @@ import { fetchFields, fetchSelectedFields, selectField, toggleFieldSelection } f
 import { useFieldsSelector, useFieldsSelection, useFieldsStatus } from "./state/hooks";
 import Formatting from "./Formatting";
 import './admin.css'
+import { formatFieldName } from "./tagStyle";
 
 const Admin = ()=>{
     const fields = useFieldsSelector()
@@ -29,16 +30,6 @@ const Admin = ()=>{
     console.log("Selected fields to save:", selectedFields);
     dispatch(selectField(selectedFields)); // Dispatch action to save selected fields
   };
-
-   // Function to format field names
-   const formatFieldName = (fieldName) => {
-    // Remove underscores and capitalize each word
-    return fieldName
-        .replace(/_/g, ' ') // Replace underscores with spaces
-        .split(' ') // Split into words
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
-        .join(' '); // Join words back together
-};
 
 
 if (status === 'loading') return <h2 className="status-message">Loading...</h2>;

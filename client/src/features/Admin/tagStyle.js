@@ -21,3 +21,11 @@ export const tagStyle = {
         padding: "4px 0",
     },
 };
+
+export const formatFieldName = (fieldName) => {
+    return fieldName
+        .replace(/_/g, ' ') // Replace underscores with spaces
+        .split(' ') // Split into words
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
+        .join(' '); // Join words back together
+};

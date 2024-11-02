@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectFont } from "./state/adminSlice";
 import { useFontSelection} from "./state/hooks";
 import { tagStyle } from "./tagStyle";
+import Tag from "./Tag";
  
 const Formatting = ({selectedFields})=>{
     const dispatch = useDispatch()
@@ -32,16 +33,6 @@ const Formatting = ({selectedFields})=>{
         dispatch(selectFont(value));
       };
 
-       // Function to format field names
-   const formatFieldName = (fieldName) => {
-    // Remove underscores and capitalize each word
-    return fieldName
-        .replace(/_/g, ' ') // Replace underscores with spaces
-        .split(' ') // Split into words
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
-        .join(' '); // Join words back together
-};
-
 return(
     <>
     
@@ -54,29 +45,7 @@ return(
                 <option value="Georgia">Georgia</option>
                 <option value="Times New Roman">Times New Roman</option>
             </select>
-      <div
-    style={{ fontFamily: fontType, ...tagStyle.tagContainer}}
-        >
-      
-         {/* Show title, first name, last name individually */}
-         <div
-          style={{...tagStyle.name}}>
-          {selectedFields.includes("title") && (
-            <span>{formatFieldName("title")} </span>
-          )}
-          {selectedFields.includes("first_name") && (
-            <span>{formatFieldName("first_name")} </span>
-          )}
-          {selectedFields.includes("last_name") && (
-            <span>{formatFieldName("last_name")}</span>
-          )}
-        </div>
-        
-        {/* Display remaining fields */}
-        {selectedFields.filter(field => !['title', 'first_name', 'last_name'].includes(field)).map((item, index) => (
-          <div key={index} style={{...tagStyle.field}}>{formatFieldName(item)}</div>
-        ))}
-      </div>
+      <Tag attendee={{}} selectedFields={selectedFields} fontType={fontType}/>
             </>
 )
 }
@@ -109,3 +78,27 @@ export default Formatting
 // fontSize: "36px", // Font size for attendee name
 //             fontWeight: "bold",
 //             marginBottom: "0.5rem",
+
+/* <div
+    style={{ fontFamily: fontType, ...tagStyle.tagContainer}}
+        >
+      
+         {/* Show title, first name, last name individually */
+         /*<div
+          style={{...tagStyle.name}}>
+          {selectedFields.includes("title") && (
+            <span>{formatFieldName("title")} </span>
+          )}
+          {selectedFields.includes("first_name") && (
+            <span>{formatFieldName("first_name")} </span>
+          )}
+          {selectedFields.includes("last_name") && (
+            <span>{formatFieldName("last_name")}</span>
+          )}
+        </div>
+        
+        {/* Display remaining fields */
+       /* {selectedFields.filter(field => !['title', 'first_name', 'last_name'].includes(field)).map((item, index) => (
+          <div key={index} style={{...tagStyle.field}}>{formatFieldName(item)}</div>
+        ))}
+      </div>  */

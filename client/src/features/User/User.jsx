@@ -6,6 +6,7 @@ import { useAttendeeSelector, useAttendeeStatus } from "./state/hooks";
 import CheckIn from "./CheckIn";
 import Print from "./Print";
 import './user.css'
+import { formatFieldName } from "../Admin/tagStyle";
 
 const User = ()=>{
     const [query, setQuery] = useState("")
@@ -22,17 +23,6 @@ const User = ()=>{
     await dispatch(fetchAttendees(query)).unwrap();
 
   }
-
-  // Function to format field names
-  const formatFieldName = (fieldName) => {
-    // Remove underscores and capitalize each word
-    return fieldName
-        .replace(/_/g, ' ') // Replace underscores with spaces
-        .split(' ') // Split into words
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
-        .join(' '); // Join words back together
-};
-
 
   if (status === 'loading') return <h2 className="status-message">Loading...</h2>
   if (status === 'failed') return <h2 className="status-message error-message">Can't get attendee...</h2>
