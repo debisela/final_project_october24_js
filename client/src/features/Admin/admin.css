@@ -4,17 +4,20 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
-    background-color: #f7f7f7;
-    font-family: Arial, sans-serif;
-    text-align: center;
+    height: 100%; /* Full height of the parent (body) */
+    width: 600px;
+    max-width: 800px;
+    background-color: white; /* White background for the container */
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 20px; /* Padding for inner spacing */
+    margin: auto; /* Center the container */
 }
 
 /* Main heading */
 .main-heading {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 1.5rem;
+    color: #331a37; /* Dark color for the heading */
+    margin-bottom: 1rem;
 }
 
 /* Fields selection container */
@@ -56,14 +59,15 @@
 
 /* Submit button styling */
 .submit-button {
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 0.8rem 2rem; /* Button padding */
+    font-size: 1.1rem; /* Font size for buttons */
+    width: 100%; 
+    border: none; /* No border */
+    border-radius: 8px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for effects */
+    background-color: #590c65; /* Purple background */
+    color: white; /* White text */
 }
 
 /* Hover and focus effect for the button */
@@ -80,4 +84,59 @@
 
 .error-message {
     color: #FF5733;
+}
+
+
+/* Overall container for the formatting section */
+/* Container for formatting section */
+.formatting-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Side-by-side layout for font selection and tag preview */
+.side-by-side-container {
+    display: flex;
+    gap: 2rem; /* Space between font selection and tag preview */
+    width: 100%;
+    align-items: flex-start; /* Align top of both sections */
+    justify-content: space-between; /* Optional: add space between */
+}
+
+/* Font selection styling */
+.font-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+}
+
+/* Dropdown styling */
+.font-select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 200px;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Tag preview styling */
+.tag-preview {
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    width: 100%;
+    max-width: 300px; /* Limit width of the tag preview */
 }

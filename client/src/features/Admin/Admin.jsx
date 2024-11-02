@@ -38,7 +38,7 @@ if (status === 'failed') return <h2 className="status-message error-message">Can
 return (
     <div className="admin-container">
         <h2 className="main-heading">Select fields for User interface</h2>
-        <h3>selected fields will be visible for users on attendee search</h3>
+        <p>selected fields will be visible for users on attendee search</p>
         <div className={`fields-selection ${fields.length > 2 ? 'two-columns' : ''}`}>
             {fields.map((item, index) => (
                 <div key={index} className="field-item">

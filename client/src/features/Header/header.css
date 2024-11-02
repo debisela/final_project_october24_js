@@ -1,15 +1,16 @@
 /* Header container styling */
 .header-container {
-    background-color: #333; /* Dark background for the header */
+    background-color: #331a37; /* Dark background for the header */
     padding: 1.5rem; /* Slightly increased padding for a better look */
     display: flex;
     justify-content: center;
+    border-radius: 8px;
 }
 
 /* Navbar styling */
 .nav-bar {
     display: flex;
-    gap: 2rem; /* Space between navigation links */
+    gap: 4rem; /* Space between navigation links */
 }
 
 /* Individual link styling */
@@ -23,11 +24,7 @@
 
 /* Hover effect for links */
 .nav-link:hover {
-    color: #4CAF50; /* Green color on hover */
+    color:  #d570d2;
     transform: scale(1.05); /* Slightly larger on hover */
 }
 
-/* Active link styling (optional) */
-.nav-link-active {
-    color: #FF5733; /* Distinct color for active links */
-}
