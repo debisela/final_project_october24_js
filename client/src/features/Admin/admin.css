@@ -24,6 +24,14 @@
     align-items: start;
     gap: 1rem;
     margin-bottom: 2rem;
+    width: 100%; /* Ensures it spans full width */
+}
+
+/* Two-column layout for fields selection */
+.fields-selection.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+    gap: 1rem 2rem; /* Spacing between rows and columns */
 }
 
 /* Individual field item */
