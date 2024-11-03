@@ -53,10 +53,7 @@ const User = () => {
                     attendees.map((attendee) => (
                         <div className="attendee-card" key={attendee.id}>
                             {Object.entries(attendee).map(([key, value]) => {
-                                if (key !== 'id' && key !== 'checked_in' && key !== 'check_in_time') {
                                     return <p key={key} className="attendee-info">{`${formatFieldName(key)}: ${value}`}</p>;
-                                }
-                                return null;
                             })}
                             <div className="button-container">
                             <CheckIn attendeeId={attendee.id} checkedIn={attendee.checked_in} />

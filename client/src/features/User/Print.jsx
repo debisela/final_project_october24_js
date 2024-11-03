@@ -22,6 +22,7 @@ const Print = ({ attendee }) => {
       const nameHeading = `<h2 style="
         font-size: 36px;
         font-weight: bold;
+        color: ${fontColor};
         margin-bottom: 0.5rem;">${title}${firstName} ${lastName}</h2>`;
 
       const additionalFields = Object.entries(attendee)

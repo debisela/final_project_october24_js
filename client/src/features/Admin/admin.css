@@ -11,7 +11,7 @@
     border-radius: 8px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     padding: 20px; /* Padding for inner spacing */
-    margin: auto; /* Center the container */
+    margin: 20px auto; /* Center the container */
 }
 
 .field-selection-container {
