@@ -64,7 +64,7 @@ for (const item of selectedFields){
 }
  // Set font_type to null for all fields where show_column is false
  await db('tag_settings')
- .update({ font_type: null })
+ .update({ font_type: null, font_color: null })
  .where('show_column', false);
 }
 //fetch selected fields
@@ -78,7 +78,7 @@ const getSelectedFields = async()=>{
 //update tag_settings table with chosen font
 const updateFontType = async(fontType)=>{
     await db('tag_settings')
-    .update({font_type:fontType})
+    .update({font_type:fontType,})
     .where('show_column',true)
 }
 
@@ -91,19 +91,35 @@ const getFontType = async()=>{
     .first()
 }
 
-//update font-color for specific selected fields
-const updateColorSize = async(updateFields)=>{
-    for (const item of updateFields){
-        await db('tag_settings')
-        .update({
-        font_color:item.font_color,
-        font_size:item.font_size
-    })
-        .where('column_name',item.column_name)
-        .andWhere('show_column',true)
-    }
-    }
+//update tag_settings table with chosen font
+const updateColor = async(fontColor)=>{
+    await db('tag_settings')
+    .update({font_color:fontColor})
+    .where('show_column',true)
+}
 
-module.exports = {getFields, saveTagFields, getSelectedFields, updateFontType, getFontType, updateColorSize}
+
+//fetch fonttype
+const getColor = async()=>{
+    return await db('tag_settings')
+    .select('font_color')
+    .where('show_column',true)
+    .first()
+}
+
+// //update font-color for specific selected fields
+// const updateColorSize = async(updateFields)=>{
+//     for (const item of updateFields){
+//         await db('tag_settings')
+//         .update({
+//         font_color:item.font_color,
+//         font_size:item.font_size
+//     })
+//         .where('column_name',item.column_name)
+//         .andWhere('show_column',true)
+//     }
+//     }
+
+module.exports = {getFields, saveTagFields, getSelectedFields, updateFontType, getFontType, updateColor, getColor}
 
 

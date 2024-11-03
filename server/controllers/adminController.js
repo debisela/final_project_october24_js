@@ -1,4 +1,4 @@
-const {getFields, saveTagFields, getSelectedFields, updateFontType, getFontType, updateColorSize} = require('../models/adminModel')
+const {getFields, saveTagFields, getSelectedFields, updateFontType, getFontType, updateColor, getColor} = require('../models/adminModel')
 
 const _getFields = async(req, res)=>{
     try {
@@ -63,20 +63,45 @@ const _updateFontType = async(req, res)=>{
         }
     }
 
-
-const _updateColorSize = async(req, res)=>{
+    const _updateFontColor = async(req, res)=>{
 
         try {
-            const {updateFields} = req.body;
-            console.log(req.body);
+            const {fontColor} = req.body;
+            console.log(fontColor);
             
-            await updateColorSize(updateFields);
-            res.status(200).json({msg:'font-color and size updated successfully'})
+            await updateColor(fontColor);
+            res.status(200).json({msg:'font-color updated successfully', fontColor: fontColor})
             
         } catch (error) {
             console.log(error);
-            res.status(404).json({msg:'error updating font-color and size'})
+            res.status(404).json({msg:'error updating font-color'})
         }
+        }
+    
+        const _getFontColor = async(req, res)=>{
+            try {
+                const fontColor = await getColor();
+                res.status(200).json(fontColor);
+            } catch (error) {
+                console.log(error);
+                res.status(404).json({msg:'error fetching fontcolor'})
+            }
         }
 
-module.exports={_getFields, _saveTagFields, _getSelectedFields, _updateFontType,_getFontType,_updateColorSize}
+
+// const _updateColorSize = async(req, res)=>{
+
+//         try {
+//             const {updateFields} = req.body;
+//             console.log(req.body);
+            
+//             await updateColorSize(updateFields);
+//             res.status(200).json({msg:'font-color and size updated successfully'})
+            
+//         } catch (error) {
+//             console.log(error);
+//             res.status(404).json({msg:'error updating font-color and size'})
+//         }
+//         }
+
+module.exports={_getFields, _saveTagFields, _getSelectedFields, _updateFontType,_getFontType,_updateFontColor, _getFontColor}

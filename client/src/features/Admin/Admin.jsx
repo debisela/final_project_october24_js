@@ -38,6 +38,7 @@ if (status === 'failed') return <h2 className="status-message error-message">Can
 return (
     <div className="admin-container">
         <h2 className="main-heading">Field selection</h2>
+        <div className="field-selection-container">
         <div className={`fields-selection ${fields.length > 2 ? 'two-columns' : ''}`}>
             {fields.map((item, index) => (
                 <div key={index} className="field-item">
@@ -53,6 +54,7 @@ return (
             ))}
             </div>
             <button onClick={handleSubmit} className="submit-button">Save selection</button>
+            </div>
         
         <Formatting selectedFields={selectedFields} />
     </div>
