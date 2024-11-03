@@ -4,10 +4,10 @@ const _searchAttendee = async (req, res) =>{
     const query = req.query.query;
 
     try {
-        const {attendees, fontType} = await searchAttendee(query);
+        const {attendees, fontType, fontColor} = await searchAttendee(query);
         console.log("attendees from DB", attendees);
         
-        res.status(200).json({attendees, fontType});
+        res.status(200).json({attendees, fontType, fontColor});
         
     } catch (error) {
         console.log(error);

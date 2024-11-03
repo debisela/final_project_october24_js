@@ -13,7 +13,8 @@ const Formatting = ({ selectedFields }) => {
 
     useEffect(() => {
         console.log("Current fontType:", fontType);
-    }, [fontType]);
+        console.log("Current fontColor:", fontColor);
+    }, [fontType, fontColor]);
 
     const handleFontChange = (e) => {
         const { value } = e.target;
