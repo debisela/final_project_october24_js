@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     height: 100%; /* Full height of the parent (body) */
-    max-width: 800px; /* Set max-width to 800px */
+    max-width: 600px; /* Set max-width to 800px */
     width: 100%;
     background-color: white; /* White background for the container */
     border-radius: 8px;
