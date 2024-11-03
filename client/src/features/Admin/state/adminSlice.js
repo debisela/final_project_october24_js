@@ -9,7 +9,7 @@ const initialState = {
     selectedFields:[],
     fontType: '',
     // fontSize: '16px',
-    // fontColor: '#000000', //default black
+    fontColor: '',
     status: "",
 }
 
@@ -89,6 +89,31 @@ export const selectFont = createAsyncThunk(
     }
 )
 
+//async thunk for selecting font-color
+export const selectColor = createAsyncThunk(
+    'admin/selectFontColor',
+    async(fontColor, {rejectWithValue})=>{
+        try {
+            console.log('fontcolor selected', fontColor);
+            
+            const response = await axios.post(`${API_URL}/api/admin/tag/color`, 
+            {fontColor},
+            {headers: {
+                'Content-Type': 'application/json'
+            }});
+            console.log("response data", response);
+            
+            return fontColor;
+            
+            
+        } catch (error) {
+            console.log("getting font-color");
+            
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
+
 export const adminSlice = createSlice({
     name: "admin",
     initialState: initialState,
@@ -146,12 +171,23 @@ export const adminSlice = createSlice({
         .addCase(selectFont.rejected, state=>{
             state.status = "failed"
         })
+        .addCase(selectColor.pending, state=>{
+            state.status = "loading";
+        })
+        .addCase(selectColor.fulfilled, (state,action)=>{
+            state.status = "success";
+            state.fontColor = action.payload
+        })
+        .addCase(selectColor.rejected, state=>{
+            state.status = "failed"
+        })
     }
 })
 
 export const fields = (state)=>state.fieldsReducer.fields;
 export const selectedFields = (state)=> state.fieldsReducer.selectedFields;
 export const fontType = (state)=> state.fieldsReducer.fontType;
+export const fontColor = (state)=> state.fieldsReducer.fontColor;
 
 
 export const status = (state)=> state.fieldsReducer.status

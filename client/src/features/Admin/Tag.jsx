@@ -1,11 +1,11 @@
 import React from "react";
 import { tagStyle, formatFieldName } from "./tagStyle";
 
-const Tag = ({ selectedFields, fontType }) => {
+const Tag = ({ selectedFields, fontType, fontColor }) => {
    
 
     return (
-        <div style={{ fontFamily: fontType, ...tagStyle.tagContainer }}>
+        <div style={{ fontFamily: fontType, color: fontColor, ...tagStyle.tagContainer }}>
             {/* Show title, first name, last name individually */}
             <div style={{ ...tagStyle.name }}>
                 {selectedFields.includes("title") && (
