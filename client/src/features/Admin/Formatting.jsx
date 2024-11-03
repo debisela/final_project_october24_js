@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { selectFont } from "./state/adminSlice";
 import { useFontSelection } from "./state/hooks";
 import Tag from "./Tag";
+import { SketchPicker} from 'react-color'
+
 
 const Formatting = ({ selectedFields }) => {
     const dispatch = useDispatch();
@@ -23,6 +25,7 @@ const Formatting = ({ selectedFields }) => {
       <h2 className="heading">Tag Styling & Preview</h2>
       <div className="formatting-container">
       <div className="side-by-side-container">
+        <div className="selection-container">
           <div className="font-selection">
               <label htmlFor="font-select">Font Selection</label>
               <select
@@ -39,6 +42,11 @@ const Formatting = ({ selectedFields }) => {
                   <option value="Georgia">Georgia</option>
                   <option value="Times New Roman">Times New Roman</option>
               </select>
+          </div>
+          <div>
+            <div className="color-selection">Color Selection</div>
+            <SketchPicker/>
+          </div>
           </div>
           
           <div className="tag-preview">

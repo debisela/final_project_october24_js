@@ -107,7 +107,14 @@
     gap: 2rem; /* Space between font selection and tag preview */
     width: 100%;
     align-items: flex-start; /* Align top of both sections */
-    justify-content: space-between; /* Optional: add space between */
+    /* justify-content: space-between; */
+}
+
+/* Font selection styling */
+.font-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 /* Font selection styling */
@@ -127,6 +134,12 @@
     max-width: 200px;
     background-color: #fff;
     color: #333;
+}
+/* Color selection styling */
+.color-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 /* Tag preview styling */
