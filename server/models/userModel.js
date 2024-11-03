@@ -20,14 +20,15 @@ const attendees = await db('attendees')
 
 //fetch font_type (need only the first row)
 const fontTypeRow = await db('tag_settings')
-.select('font_type')
+.select('font_type', "font_color")
 .where('show_column',true)
 .first()
 
 // Extract font_type value, or set to null if not found
 const fontType = fontTypeRow ? fontTypeRow.font_type : null;
+const fontColor = fontTypeRow ? fontTypeRow.font_color : null;
 
-return {attendees, fontType}
+return {attendees, fontType, fontColor}
 }
 
 

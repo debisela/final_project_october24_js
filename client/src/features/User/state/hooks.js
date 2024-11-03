@@ -1,6 +1,6 @@
 import { useSelector} from "react-redux";
 
-import { selectAttendee, selectFont, selectStatus } from "./selectors";
+import { selectAttendee, selectFont, selectColor, selectStatus } from "./selectors";
 
 export const useAttendeeSelector = ()=>{
     return useSelector(selectAttendee)
@@ -8,6 +8,10 @@ export const useAttendeeSelector = ()=>{
 
 export const useFontSelector = ()=>{
     return useSelector(selectFont)
+}
+
+export const useColorSelector = ()=>{
+    return useSelector(selectColor)
 }
 
 export const useAttendeeStatus = ()=>{

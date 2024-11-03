@@ -1,15 +1,16 @@
 import React from "react";
-import { useFontSelector } from "./state/hooks";
+import { useFontSelector, useColorSelector } from "./state/hooks";
 import Tag from "../Admin/Tag";
 import { formatFieldName } from "../Admin/tagStyle";
-import { fontType } from "./state/userSlice";
+import { fontType, fontColor } from "./state/userSlice";
 import { tagStyle } from "../Admin/tagStyle";
 
 
-const Print = ({ attendee }) => {
+const Print = ({ attendee }) => {  
       //get font
   const fontType = useFontSelector(attendee.fonttype)
-  console.log(fontType);
+  const fontColor = useColorSelector(attendee.fontColor)
+  console.log(fontType, fontColor);
     
   const handlePrint = () => {
     const printWindow = window.open("", "", "width=600,height=400");
@@ -32,7 +33,9 @@ const Print = ({ attendee }) => {
           ([key, value]) => `<p style="
             font-size: 20px;
             margin: 0;
-            padding: 4px 0;">${formatFieldName(key)}: ${value}</p>`
+            padding: 4px 0;
+            color: ${fontColor};
+            ">${formatFieldName(key)}: ${value}</p>`
         )
         .join("");
 
